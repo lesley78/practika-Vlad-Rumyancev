@@ -1,29 +1,4 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-header {
-    background: #333;
-    color: #fff;
-    padding: 1rem;
-}
-nav a {
-    color: #fff;
-    margin-right: 15px;
-    text-decoration: none;
-}
-main {
-    padding: 2rem;
-}
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1rem;
-}
-
+/* Глобальные стили */
 body {
     margin: 0;
     padding: 0;
@@ -32,72 +7,108 @@ body {
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    background: #0a0e23; /* Темно-синий космический фон */
 }
 
-/* Фон: земля + атмосфера + космос */
+/* Атмосферный градиент (полукруглый) */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(
-        to top,
-        #1a3d7c 0%,       /* Космос (тёмно-синий) */
-        #4b8fdf 30%,     /* Атмосфера (голубой) */
-        #2e8b57 70%      /* Земля (зелёный) */
+    bottom: -50vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200vw;
+    height: 100vh;
+    border-radius: 50% 50% 0 0;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(46, 139, 87, 0.8) 0%,    /* Зеленый (земля) */
+        rgba(75, 143, 223, 0.6) 30%,  /* Голубой (атмосфера) */
+        rgba(26, 61, 124, 0.4) 60%,  /* Синий (верх атмосферы) */
+        transparent 414%               /* Плавное исчезновение */
     );
+    z-index: -1;
 }
 
-/* Земля (полукруг внизу) */
+/* Земля (полукруг в самом низу) */
 body::after {
     content: "";
     position: fixed;
-    bottom: -50px;
+    bottom: -150px;
     left: 50%;
     transform: translateX(-50%);
     width: 200%;
     height: 300px;
     border-radius: 50%;
-    background: #2e8b57; /* Зелёный цвет земли */
+    background: #2e8b57; /* Зеленый цвет земли */
     z-index: -1;
+    box-shadow: 0 0 150px rgba(46, 139, 87, 0.8);
 }
 
 /* Header с солнцем */
 .cosmic-header {
     background: transparent;
-    padding: 1rem;
+    padding: 2rem 1rem;
     position: relative;
+    z-index: 2;
 }
 
-/* Солнце (полукруг в header) */
+/* Солнце (полукруг вверху справа) */
 .sun {
     position: absolute;
-    top: -20px;
-    right: 50px;
-    width: 100px;
-    height: 50px;
+    top: -30px;
+    right: 10%;
+    width: 120px;
+    height: 60px;
     background: radial-gradient(ellipse at top, #ffde00, #ff7e00);
-    border-radius: 100px 100px 0 0;
-    box-shadow: 0 0 30px #ff7e00;
-    z-index: -1;
+    border-radius: 120px 120px 0 0;
+    box-shadow: 
+        0 0 60px #ff7e00,
+        0 0 120px rgba(255, 126, 0, 0.4);
+    z-index: 1;
+    animation: pulse 4s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.8; }
+    to { opacity: 1; box-shadow: 0 0 80px #ff7e00; }
 }
 
 /* Меню */
 nav {
     text-align: center;
+    position: relative;
+    z-index: 3;
 }
 
 nav a {
     color: white;
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
     font-weight: bold;
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    font-size: 1.1rem;
+    transition: all 0.3s;
 }
 
 nav a:hover {
-    color: #ffde00; /* Жёлтый при наведении */
+    color: #ffde00;
+    text-shadow: 0 0 10px rgba(255, 222, 0, 0.7);
+}
+
+/* Основной контент */
+main {
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    min-height: 80vh;
+}
+
+/* Футер */
+footer {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    z-index: 2;
 }
