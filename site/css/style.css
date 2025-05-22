@@ -1,21 +1,23 @@
-/* Основные стили */
+
 :root {
-    --primary-color: #2c3e50;
-    --secondary-color: #3498db;
-    --accent-color: #e74c3c;
-    --light-color: #ecf0f1;
-    --dark-color: #2c3e50;
-    --text-color: #333;
+    --primary-color: #1a2a3a;
+    --secondary-color: #4ecdc4;
+    --accent-color: #ff6b6b;
+    --light-color: #f0f4f8;
+    --dark-color: #0d1a26;
+    --text-color: #2d3436;
     --text-light: #7f8c8d;
+    --gradient-1: linear-gradient(135deg, #1a2a3a 0%, #0d1a26 100%);
+    --gradient-2: linear-gradient(45deg, #4ecdc4 0%, #45b7af 100%);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background: var(--light-color);
 }
 
 header {
@@ -27,6 +29,8 @@ header {
     align-items: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+
 
 .logo {
     display: flex;
@@ -62,7 +66,7 @@ nav ul li a:hover {
 
 main {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 6rem auto 2rem;
     padding: 0 1rem;
 }
 
@@ -74,21 +78,38 @@ footer {
     margin-top: 2rem;
 }
 
-/* Стили для главной страницы */
 .hero {
+    position: relative;
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
     background-size: cover;
     background-position: center;
     color: white;
-    padding: 4rem 2rem;
+    padding: 8rem 2rem;
     text-align: center;
     border-radius: 8px;
     margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/particles.gif') center/cover;
+    opacity: 0.15;
+    z-index: -1;
 }
 
 .hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    background: var(--gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .hero p {
@@ -98,17 +119,19 @@ footer {
 
 .cta-button {
     display: inline-block;
-    background-color: var(--accent-color);
+    background: var(--gradient-2);
     color: white;
     padding: 0.8rem 1.5rem;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(78,205,196,0.2);
 }
 
 .cta-button:hover {
-    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(78,205,196,0.3);
 }
 
 .features {
@@ -119,15 +142,18 @@ footer {
 }
 
 .feature {
-    background-color: white;
+    background: rgba(255,255,255,0.95);
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .feature:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
 }
 
 .feature h3 {
@@ -158,9 +184,8 @@ footer {
     transform: scale(1.02);
 }
 
-/* Стили для страницы "О проекте" */
 .project-description {
-    background-color: white;
+    background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -190,9 +215,8 @@ footer {
     padding-left: 1.5rem;
 }
 
-/* Стили для страницы "Участники" */
 .team {
-    background-color: white;
+    background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -239,9 +263,8 @@ footer {
     border-left: 4px solid var(--accent-color);
 }
 
-/* Стили для страницы "Журнал" */
 .journal {
-    background-color: white;
+    background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -278,9 +301,8 @@ footer {
     margin-top: 1rem;
 }
 
-/* Стили для страницы "Ресурсы" */
 .resources {
-    background-color: white;
+    background: rgba(255,255,255,0.95);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -345,7 +367,15 @@ footer {
     border-radius: 4px;
 }
 
-/* Адаптивность */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
