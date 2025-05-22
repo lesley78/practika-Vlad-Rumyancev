@@ -23,7 +23,7 @@ body {
 header {
     background-color: var(--primary-color);
     color: white;
-    padding: 1rem;
+    padding: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -107,6 +107,7 @@ footer {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     background: var(--gradient-2);
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -382,7 +383,7 @@ footer {
     }
 
     .logo {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
     }
 
     nav ul {
