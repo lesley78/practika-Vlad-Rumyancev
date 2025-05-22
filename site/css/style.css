@@ -107,7 +107,6 @@ footer {
     font-size: 3rem;
     margin-bottom: 1.5rem;
     background: var(--gradient-2);
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
@@ -383,7 +382,7 @@ footer {
     }
 
     .logo {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
     nav ul {
