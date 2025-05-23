@@ -10,8 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll();
+    window.addEventListener('scroll', () => {
+    const header = document.querySelector('header');
+    header.classList.toggle('scrolled', window.scrollY > 50);
+});
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
