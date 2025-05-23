@@ -24,7 +24,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Обновленный Header */
 header {
     background: linear-gradient(90deg, 
                   var(--primary-color) 0%, 
@@ -78,6 +77,10 @@ header.scrolled {
     margin-right: 15px;
 }
 
+nav {
+    margin-right: 50px;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -110,7 +113,6 @@ nav ul li a:hover {
     100% { left: 100%; }
 }
 
-/* Остальные стили остаются без изменений */
 main {
     max-width: 1200px;
     margin: 6rem auto 2rem;
@@ -127,7 +129,7 @@ footer {
 
 .hero {
     position: relative;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/hero-bg.jpg');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5));
     background-size: cover;
     background-position: center;
     color: white;
